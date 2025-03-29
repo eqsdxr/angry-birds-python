@@ -1,3 +1,14 @@
+
+
+~~Modify resources/images/wood.png to greyscale, call it stone.png~~
+~~Modify resources/images/wood2.png to greyscale, call it stone2.png~~
+~~Use stone and stone2.png as textures for stone elements.~~
+~~Stone is too heavy to move when hit by a bird.~~
+~~Stone is affected by gravity.~~
+~~Add stone to the first level both as a beam and as a column.~~
+
+
+
 Angry Birds in Python
 =====================
 [Youtube Video](https://www.youtube.com/watch?v=B7G5JtCFepE&feature=youtu.be)

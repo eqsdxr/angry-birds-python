@@ -1,5 +1,5 @@
 from characters import Pig
-from polygon import Polygon
+from polygon import StonePolygon, WoodPolygon
 
 
 class Level():
@@ -22,11 +22,11 @@ class Level():
         for i in range(n):
             y = y0+100+i*100
             p = (x, y)
-            self.columns.append(Polygon(p, 20, 85, self.space))
+            self.columns.append(WoodPolygon(p, 20, 85, self.space))
             p = (x+60, y)
-            self.columns.append(Polygon(p, 20, 85, self.space))
+            self.columns.append(WoodPolygon(p, 20, 85, self.space))
             p = (x+30, y+50)
-            self.beams.append(Polygon(p, 85, 20, self.space))
+            self.beams.append(WoodPolygon(p, 85, 20, self.space))
 
     def closed_flat(self, x, y, n):
         """Create a closed flat struture"""
@@ -34,27 +34,27 @@ class Level():
         for i in range(n):
             y = y0+100+i*125
             p = (x+1, y+22)
-            self.columns.append(Polygon(p, 20, 85, self.space))
+            self.columns.append(WoodPolygon(p, 20, 85, self.space))
             p = (x+60, y+22)
-            self.columns.append(Polygon(p, 20, 85, self.space))
+            self.columns.append(WoodPolygon(p, 20, 85, self.space))
             p = (x+30, y+70)
-            self.beams.append(Polygon(p, 85, 20, self.space))
+            self.beams.append(WoodPolygon(p, 85, 20, self.space))
             p = (x+30, y-30)
-            self.beams.append(Polygon(p, 85, 20, self.space))
+            self.beams.append(WoodPolygon(p, 85, 20, self.space))
 
     def horizontal_pile(self, x, y, n):
         """Create a horizontal pile"""
         y += 70
         for i in range(n):
             p = (x, y+i*20)
-            self.beams.append(Polygon(p, 85, 20, self.space))
+            self.beams.append(WoodPolygon(p, 85, 20, self.space))
 
     def vertical_pile(self, x, y, n):
         """Create a vertical pile"""
         y += 10
         for i in range(n):
             p = (x, y+85+i*85)
-            self.columns.append(Polygon(p, 20, 85, self.space))
+            self.columns.append(WoodPolygon(p, 20, 85, self.space))
 
     def build_0(self):
         """level 0"""
@@ -62,18 +62,24 @@ class Level():
         pig2 = Pig(985, 182, self.space)
         self.pigs.append(pig1)
         self.pigs.append(pig2)
+        p = (850, 80)
+        self.columns.append(StonePolygon(p, 20, 85, self.space))
+        p = (900, 80)
+        self.columns.append(StonePolygon(p, 20, 85, self.space))
+        p = (875, 155)
+        self.beams.append(StonePolygon(p, 85, 20, self.space))
         p = (950, 80)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (1010, 80)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (980, 150)
-        self.beams.append(Polygon(p, 85, 20, self.space))
+        self.beams.append(WoodPolygon(p, 85, 20, self.space))
         p = (950, 200)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (1010, 200)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (980, 240)
-        self.beams.append(Polygon(p, 85, 20, self.space))
+        self.beams.append(WoodPolygon(p, 85, 20, self.space))
         self.number_of_birds = 4
         if self.bool_space:
             self.number_of_birds = 8
@@ -86,15 +92,15 @@ class Level():
         pig = Pig(1000, 100, self.space)
         self.pigs.append(pig)
         p = (900, 80)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (850, 80)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (850, 150)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (1050, 150)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (1105, 210)
-        self.beams.append(Polygon(p, 85, 20, self.space))
+        self.beams.append(WoodPolygon(p, 85, 20, self.space))
         self.number_of_birds = 4
         if self.bool_space:
             self.number_of_birds = 8
@@ -106,15 +112,15 @@ class Level():
         pig2 = Pig(1000, 230, self.space)
         self.pigs.append(pig2)
         p = (880, 80)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (880, 150)
-        self.beams.append(Polygon(p, 85, 20, self.space))
+        self.beams.append(WoodPolygon(p, 85, 20, self.space))
         p = (1000, 80)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (1000, 180)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (1000, 210)
-        self.beams.append(Polygon(p, 85, 20, self.space))
+        self.beams.append(WoodPolygon(p, 85, 20, self.space))
         self.number_of_birds = 4
         if self.bool_space:
             self.number_of_birds = 8
@@ -131,47 +137,47 @@ class Level():
         pig.life = 25
         self.pigs.append(pig)
         p = (1100, 100)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (1070, 152)
-        self.beams.append(Polygon(p, 85, 20, self.space))
+        self.beams.append(WoodPolygon(p, 85, 20, self.space))
         p = (1040, 100)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (980, 100)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (920, 100)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (950, 152)
-        self.beams.append(Polygon(p, 85, 20, self.space))
+        self.beams.append(WoodPolygon(p, 85, 20, self.space))
         p = (1010, 180)
-        self.beams.append(Polygon(p, 85, 20, self.space))
+        self.beams.append(WoodPolygon(p, 85, 20, self.space))
         p = (860, 100)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (800, 100)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (830, 152)
-        self.beams.append(Polygon(p, 85, 20, self.space))
+        self.beams.append(WoodPolygon(p, 85, 20, self.space))
         p = (890, 180)
-        self.beams.append(Polygon(p, 85, 20, self.space))
+        self.beams.append(WoodPolygon(p, 85, 20, self.space))
         p = (860, 223)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (920, 223)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (980, 223)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (1040, 223)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (890, 280)
-        self.beams.append(Polygon(p, 85, 20, self.space))
+        self.beams.append(WoodPolygon(p, 85, 20, self.space))
         p = (1010, 280)
-        self.beams.append(Polygon(p, 85, 20, self.space))
+        self.beams.append(WoodPolygon(p, 85, 20, self.space))
         p = (950, 300)
-        self.beams.append(Polygon(p, 85, 20, self.space))
+        self.beams.append(WoodPolygon(p, 85, 20, self.space))
         p = (920, 350)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (980, 350)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (950, 400)
-        self.beams.append(Polygon(p, 85, 20, self.space))
+        self.beams.append(WoodPolygon(p, 85, 20, self.space))
         self.number_of_birds = 4
         if self.bool_space:
             self.number_of_birds = 8
@@ -196,16 +202,16 @@ class Level():
         self.pigs.append(pig)
         for i in range(9):
             p = (800, 70+i*21)
-            self.beams.append(Polygon(p, 85, 20, self.space))
+            self.beams.append(WoodPolygon(p, 85, 20, self.space))
         for i in range(4):
             p = (1000, 70+i*21)
-            self.beams.append(Polygon(p, 85, 20, self.space))
+            self.beams.append(WoodPolygon(p, 85, 20, self.space))
         p = (970, 176)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (1026, 176)
-        self.columns.append(Polygon(p, 20, 85, self.space))
+        self.columns.append(WoodPolygon(p, 20, 85, self.space))
         p = (1000, 230)
-        self.beams.append(Polygon(p, 85, 20, self.space))
+        self.beams.append(WoodPolygon(p, 85, 20, self.space))
         self.number_of_birds = 4
         if self.bool_space:
             self.number_of_birds = 8
@@ -318,7 +324,7 @@ class Level():
         self.vertical_pile(900, 0, 2)
         self.vertical_pile(1000, 0, 2)
         p = (875, 230)
-        self.beams.append(Polygon(p, 85, 20, self.space))
+        self.beams.append(WoodPolygon(p, 85, 20, self.space))
         self.number_of_birds = 4
         if self.bool_space:
             self.number_of_birds = 8

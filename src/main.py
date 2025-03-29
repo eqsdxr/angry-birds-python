@@ -135,8 +135,8 @@ def distance(xo, yo, x, y):
 def load_music():
     """Load the music"""
     song1 = '../resources/sounds/angry-birds.ogg'
-    pygame.mixer.music.load(song1)
-    pygame.mixer.music.play(-1)
+    #pygame.mixer.music.load(song1)
+    #pygame.mixer.music.play(-1)
 
 
 def sling_action():
@@ -311,12 +311,49 @@ def post_solve_pig_wood(arbiter, space, _):
         pigs.remove(pig)
 
 
+def post_solve_bird_stone(arbiter, space, _):
+    """Collision between bird and stone"""
+    return
+
+
+def post_solve_pig_stone(arbiter, space, _):
+    """Collision between pig and stone"""
+    return
+
+
+def post_solve_wood_stone(arbiter, space, _):
+    """Collision between wood and stone"""
+    poly_to_remove = []
+    if arbiter.total_impulse.length > 10000:
+        a, b = arbiter.shapes
+        for column in columns:
+            if b == column.shape:
+                poly_to_remove.append(column)
+        for beam in beams:
+            if b == beam.shape:
+                poly_to_remove.append(beam)
+        for poly in poly_to_remove:
+            if poly in columns:
+                columns.remove(poly)
+            if poly in beams:
+                beams.remove(poly)
+        space.remove(b, b.body)
+        global score
+        score += 50000
+
+
 # bird and pigs
 space.add_collision_handler(0, 1).post_solve=post_solve_bird_pig
 # bird and wood
 space.add_collision_handler(0, 2).post_solve=post_solve_bird_wood
+# bird and stone
+space.add_collision_handler(0, 3).post_solve=post_solve_bird_stone
 # pig and wood
 space.add_collision_handler(1, 2).post_solve=post_solve_pig_wood
+# pig and stone
+space.add_collision_handler(1, 3).post_solve=post_solve_pig_stone
+# wood and stone
+space.add_collision_handler(2, 3).post_solve=post_solve_wood_stone
 load_music()
 level = Level(pigs, columns, beams, space)
 level.number = 0
